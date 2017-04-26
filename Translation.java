@@ -10,11 +10,10 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-public class Translation extends DictionaryMap implements Serializable {
+public class Translation implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private File fileOne = new File("English.in");
 	private File fileTwo = new File("Ukrainian.out");
-	// private DictionaryMap dist = new DictionaryMap();
 	private String[] engText;
 	private ArrayList<String> ukrText = new ArrayList<>();
 
@@ -34,7 +33,7 @@ public class Translation extends DictionaryMap implements Serializable {
 			}
 		} catch (IOException e) {
 			System.out.println(e);
-		}		
+		}
 		engText = txt.split(" ");
 	}
 
