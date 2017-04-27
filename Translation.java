@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 public class Translation implements Serializable {
 	private static final long serialVersionUID = 1L;
+	private DictionaryMap dm = new DictionaryMap();
 	private File fileOne = new File("English.in");
 	private File fileTwo = new File("Ukrainian.out");
 	private String[] engText;
@@ -38,10 +39,6 @@ public class Translation implements Serializable {
 	}
 
 	public void translate() {
-		File file = new File("distmap");
-		DictionaryMap dm = new DictionaryMap();
-		dm.loadFromFile(file);
-		dm.fillingDictionary();
 		for (int i = 0; i < engText.length; i++) {
 			if (dm.getDist().containsKey(engText[i])) {
 				ukrText.add(dm.getDist().get(engText[i]));
@@ -51,7 +48,7 @@ public class Translation implements Serializable {
 				ukrText.add(dm.getDist().get(engText[i]));
 			}
 		}
-		dm.saveToFile(file);
+		
 	}
 
 	public void writeArrayToFile() {
@@ -76,11 +73,14 @@ public class Translation implements Serializable {
 		System.out.println(txt);
 	}
 
-	public static void zapusk() {
-		Translation tr = new Translation();
-		tr.readFileToArray();
-		tr.translate();
-		tr.writeArrayToFile();
-		tr.print();
+	public void zapusk() {
+		File file = new File("distmap");		
+		dm.loadFromFile(file);
+		dm.fillingDictionary();
+		readFileToArray();
+		translate();
+		dm.saveToFile(file);
+		writeArrayToFile();
+		print();
 	}
 }
