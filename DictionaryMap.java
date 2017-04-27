@@ -96,7 +96,7 @@ public class DictionaryMap implements Serializable {
 		if (string.length() == 0) {
 			return false;
 		} else {
-			Pattern p = Pattern.compile("^([à-ÿÀ-ß- ¹³²¿¯ªº`'[^¸¨ıİûÛúÚ]]+)");
+			Pattern p = Pattern.compile("^([à-ÿÀ-ß- ¹³²¿¯ªº`'&&[^¸¨ıİûÛúÚ]]+)");
 			Matcher m = p.matcher(string);
 
 			return m.matches();
