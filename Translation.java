@@ -73,7 +73,7 @@ public class Translation implements Serializable {
 		System.out.println(txt);
 	}
 
-	public void zapusk() {
+	public void startTranslate() {
 		File file = new File("distmap");		
 		dm.loadFromFile(file);
 		dm.fillingDictionary();
